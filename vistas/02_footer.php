@@ -1,0 +1,4 @@
+<?php
+$htmlFin = '
+</body>
+</html>';
