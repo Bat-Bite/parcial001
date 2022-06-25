@@ -13,10 +13,13 @@ function Remplazar($array, $directorioActual)
     $arrayTemp1 = file($nombreArchivo1);
     foreach ($arrayTemp1 as $datos) $arrayTemp1 = explode(",", $datos);unset($datos);
 
+    $largoi=count($array);
+    $largox=count($arrayTemp0);
+
     //cargar todos los datos del array y crear 02_
-    for ($i = 0; $i < count($array); $i++) {
+    for ($i = 0; $i < $largoi; $i++) {
         $cadena = $array[$i];
-        if ($i < count($array) - 1) {
+        if ($i < $largoi - 1) {
             $cadena .= ",";
             fwrite($archivoFinal, $cadena);
         } else {
@@ -27,11 +30,12 @@ function Remplazar($array, $directorioActual)
 
 
     $archivoFinal = fopen($directorioActual . '/data/perifericos/02_' . $array[0] . '.csv', 'w+b') or die("error archivo final 3");
-    for ($i = 0; $i < count($array); $i++) {
-        for ($x = 0; $x < count($arrayTemp0); $x++) {
+
+    for ($i = 0; $i < $largoi; $i++) {
+        for ($x = 0; $x < $largox; $x++) {
             if ($array[$i] == $arrayTemp0[$x]) {
                 $cadena = $arrayTemp1[$x];
-                if ($i < count($array) - 1) {
+                if ($i < $largoi - 1) {
                     fwrite($archivoFinal, $cadena . ",");
                     $i++;
                     $x=0;
