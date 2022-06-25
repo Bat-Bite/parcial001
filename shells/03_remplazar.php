@@ -33,6 +33,8 @@ function Remplazar($array, $directorioActual)
                 $cadena = $arrayTemp1[$x];
                 if ($i < count($array) - 1) {
                     fwrite($archivoFinal, $cadena . ",");
+                    $i++;
+                    $x=0;
                 } else {
                     fwrite($archivoFinal, $cadena);
                 }
